@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845472119079700B9DD00 /* AppDelegate.swift */; };
-		DA98454A2119079700B9DD00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845492119079700B9DD00 /* ViewController.swift */; };
+		DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845492119079700B9DD00 /* HomeVC.swift */; };
 		DA98454D2119079700B9DD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA98454B2119079700B9DD00 /* Main.storyboard */; };
 		DA98454F2119079D00B9DD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA98454E2119079D00B9DD00 /* Assets.xcassets */; };
 		DA9845522119079D00B9DD00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9845502119079D00B9DD00 /* LaunchScreen.storyboard */; };
+		DA98455A211911CD00B9DD00 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA984559211911CD00B9DD00 /* AddVC.swift */; };
+		DA98455C211911D800B9DD00 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98455B211911D800B9DD00 /* SettingVC.swift */; };
+		DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */; };
+		DA98456421192A2D00B9DD00 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA98456321192A2D00B9DD00 /* MapKit.framework */; };
+		DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845652119466B00B9DD00 /* MainNavVC.swift */; };
+		DA9845682119679E00B9DD00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9845672119679E00B9DD00 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA9845442119079700B9DD00 /* Clean Up Hawaii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clean Up Hawaii.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9845472119079700B9DD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA9845492119079700B9DD00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA9845492119079700B9DD00 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		DA98454C2119079700B9DD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA98454E2119079D00B9DD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA9845512119079D00B9DD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA9845532119079D00B9DD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA984559211911CD00B9DD00 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		DA98455B211911D800B9DD00 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA98456321192A2D00B9DD00 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DA9845652119466B00B9DD00 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
+		DA9845672119679E00B9DD00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9845682119679E00B9DD00 /* CoreLocation.framework in Frameworks */,
+				DA98456421192A2D00B9DD00 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +54,7 @@
 			children = (
 				DA9845462119079700B9DD00 /* Clean Up Hawaii */,
 				DA9845452119079700B9DD00 /* Products */,
+				DA98456221192A2D00B9DD00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +70,34 @@
 			isa = PBXGroup;
 			children = (
 				DA9845472119079700B9DD00 /* AppDelegate.swift */,
-				DA9845492119079700B9DD00 /* ViewController.swift */,
+				DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */,
+				DA98455D211911DE00B9DD00 /* VCs */,
 				DA98454B2119079700B9DD00 /* Main.storyboard */,
 				DA98454E2119079D00B9DD00 /* Assets.xcassets */,
 				DA9845502119079D00B9DD00 /* LaunchScreen.storyboard */,
 				DA9845532119079D00B9DD00 /* Info.plist */,
 			);
 			path = "Clean Up Hawaii";
+			sourceTree = "<group>";
+		};
+		DA98455D211911DE00B9DD00 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				DA9845652119466B00B9DD00 /* MainNavVC.swift */,
+				DA9845492119079700B9DD00 /* HomeVC.swift */,
+				DA984559211911CD00B9DD00 /* AddVC.swift */,
+				DA98455B211911D800B9DD00 /* SettingVC.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		DA98456221192A2D00B9DD00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA9845672119679E00B9DD00 /* CoreLocation.framework */,
+				DA98456321192A2D00B9DD00 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +131,12 @@
 				TargetAttributes = {
 					DA9845432119079700B9DD00 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -134,8 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA98454A2119079700B9DD00 /* ViewController.swift in Sources */,
+				DA98455A211911CD00B9DD00 /* AddVC.swift in Sources */,
+				DA98455C211911D800B9DD00 /* SettingVC.swift in Sources */,
+				DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */,
+				DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */,
 				DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */,
+				DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,13 +328,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445VWN7H7M;
 				INFOPLIST_FILE = "Clean Up Hawaii/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Clean-Up-Hawaii";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -300,13 +347,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445VWN7H7M;
 				INFOPLIST_FILE = "Clean Up Hawaii/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Clean-Up-Hawaii";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

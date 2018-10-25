@@ -1,24 +1,295 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nmZ-8Y-dSa">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Clean Feed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pAH-R7-DKl">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <color key="backgroundColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0FU-yB-qec">
+                                    <size key="itemSize" width="375" height="202"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="qMw-83-Jep" customClass="FeedCollectionViewCell" customModule="Clean_Up_Hawaii" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="81V-YZ-ThI">
+                                                    <rect key="frame" x="20" y="12" width="335" height="137.66666666666666"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-hj-SOS">
+                                                    <rect key="frame" x="20" y="157.66666666666666" width="335" height="24.333333333333343"/>
+                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="81V-YZ-ThI" firstAttribute="leading" secondItem="qMw-83-Jep" secondAttribute="leading" constant="20" id="6Ag-io-sHZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nox-hj-SOS" secondAttribute="bottom" constant="20" id="Cha-vd-pVm"/>
+                                            <constraint firstItem="81V-YZ-ThI" firstAttribute="top" secondItem="qMw-83-Jep" secondAttribute="top" constant="12" id="Tzi-kE-F4S"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nox-hj-SOS" secondAttribute="trailing" constant="20" id="f83-V3-IMp"/>
+                                            <constraint firstItem="Nox-hj-SOS" firstAttribute="leading" secondItem="qMw-83-Jep" secondAttribute="leading" constant="20" id="jhb-nj-wWG"/>
+                                            <constraint firstItem="Nox-hj-SOS" firstAttribute="top" secondItem="81V-YZ-ThI" secondAttribute="bottom" constant="8" id="sPx-24-1uc"/>
+                                            <constraint firstAttribute="trailing" secondItem="81V-YZ-ThI" secondAttribute="trailing" constant="20" id="ycZ-k4-Bmi"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="81V-YZ-ThI" id="Trt-a1-ICQ"/>
+                                            <outlet property="locationLabel" destination="Nox-hj-SOS" id="Gby-40-P98"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="j6N-un-b4J"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="BdB-mF-Ssp"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pAH-R7-DKl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2ZN-TS-pb3"/>
+                            <constraint firstItem="pAH-R7-DKl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="dsQ-SO-w5R"/>
+                            <constraint firstItem="pAH-R7-DKl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sG5-YQ-mvs"/>
+                            <constraint firstItem="pAH-R7-DKl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vtd-hf-CQM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="homeButton" id="qGr-ip-VFm">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pIg-hz-a5f"/>
+                        <barButtonItem image="addButton" id="o40-ph-ENJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="G8I-9H-Iyk" kind="show" id="bAV-nG-ivj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pzQ-po-xZE"/>
+                        <barButtonItem image="settingsButton" id="VRm-BN-MSN">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="kfE-XQ-AnC" kind="show" id="riD-TH-2Fc"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Clean Feed" id="b54-TO-5yL">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="laf-Sx-1aT"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mainCollectionView" destination="pAH-R7-DKl" id="RJf-J3-KIg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-4" y="362.06896551724139"/>
+        </scene>
+        <!--Add to Feed-->
+        <scene sceneID="QhP-Xa-Hdx">
+            <objects>
+                <viewController storyboardIdentifier="AddVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G8I-9H-Iyk" customClass="AddVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7v4-3W-bp4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8m-in-pxv">
+                                <rect key="frame" x="261" y="635" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPostPressed:" destination="G8I-9H-Iyk" eventType="touchUpInside" id="vD3-9j-Njm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nH-GA-wnV">
+                                <rect key="frame" x="81" y="452" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pick Image">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickImagePressed:" destination="G8I-9H-Iyk" eventType="touchUpInside" id="oMD-FA-Raw"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6L-eo-KPI">
+                                <rect key="frame" x="30" y="287" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrQ-Yb-0Yc">
+                                <rect key="frame" x="122" y="560" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Pin for Spot">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapPressed:" destination="G8I-9H-Iyk" eventType="touchUpInside" id="G2e-42-UKD"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jg-x7-ywK">
+                                <rect key="frame" x="0.0" y="77" width="375" height="652"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="9su-Um-MYW"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="homeButton" id="XO8-F0-uLo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="Ixs-wR-aUa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BJP-EB-IAv"/>
+                        <barButtonItem title="Item" image="addButton" id="M7u-rh-njn">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ew1-se-Svj"/>
+                        <barButtonItem title="Item" image="settingsButton" id="IC4-d6-IQE">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="kfE-XQ-AnC" kind="show" id="oZ0-7t-Xn1"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Add to Feed" id="r0H-Bc-IDa">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="JAe-kU-H2A"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chosenImageView" destination="I6L-eo-KPI" id="vO6-dN-xx5"/>
+                        <outlet property="mapView" destination="0jg-x7-ywK" id="ryb-57-fSb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTE-D9-4tR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-658" y="1198"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Db0-o1-1Y5">
+            <objects>
+                <viewController storyboardIdentifier="SettingsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kfE-XQ-AnC" customClass="SettingsVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sgI-RB-CW6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1R-ra-p4Q">
+                                <rect key="frame" x="99" y="169" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rate Us">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8L-5p-AaJ">
+                                <rect key="frame" x="88" y="207" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Contact Us">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4O1-js-JFj">
+                                <rect key="frame" x="65" y="280" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Hawaii Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="Xwd-VA-yIg"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="homeButton" id="Lvm-MX-zsJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="YWR-he-6ZE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="475-80-iNI"/>
+                        <barButtonItem title="Item" image="addButton" id="71l-po-KAj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="G8I-9H-Iyk" kind="show" id="O0U-22-ggm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vC8-L9-bBc"/>
+                        <barButtonItem title="Item" image="settingsButton" id="lMo-uC-sW7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Settings" id="Sy7-7H-0zp">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="F1k-K9-38I"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kEL-99-K3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776.79999999999995" y="1197.7832512315272"/>
+        </scene>
+        <!--Main NavVC-->
+        <scene sceneID="OmJ-dQ-umv">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" hidesBarsWhenKeyboardAppears="YES" id="nmZ-8Y-dSa" customClass="MainNavVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G1R-kX-pvK">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dRr-TX-LQi">
+                        <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.072157230919999996" green="0.19825408019999999" blue="0.81389148560000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WLe-Qc-Whi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lXf-Zg-BeR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4" y="-581"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addButton" width="112" height="113"/>
+        <image name="homeButton" width="106" height="108"/>
+        <image name="settingsButton" width="100" height="106"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oZ0-7t-Xn1"/>
+        <segue reference="O0U-22-ggm"/>
+        <segue reference="Ixs-wR-aUa"/>
+    </inferredMetricsTieBreakers>
 </document>
