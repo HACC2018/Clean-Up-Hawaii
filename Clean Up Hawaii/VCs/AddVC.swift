@@ -13,9 +13,9 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
    static var currentLocation: CLLocation?
    var locManager = CLLocationManager()
     
-    //Outlets and variables
+   var addedLocation = false
     
-
+    //Outlets and variables
     @IBOutlet var confirmationOutlets: [UIImageView]!
     
     @IBOutlet var chosenImageView: UIImageView!
@@ -71,7 +71,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     @IBAction func addPostPressed(_ sender: Any) {
         
         validatePost()
- 
     }
         
     //Action Sheet for Selecting an Image
@@ -116,9 +115,11 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     //MARK: Map button is pressed
     @IBAction func mapPressed(_ sender: Any) {
        
-        
         getLocation()
- 
+        
+        addedLocation = true
+   
+
     }
     
     private func getLocation(){
@@ -139,6 +140,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             
             //Confirmation green check
             confirmationButtons(index: 1, confirm: true)
+            
             //Store location in variable
             AddVC.currentLocation = locManager.location
 
@@ -221,7 +223,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         }
         if checkCurrentLocation == nil{
             
-            alert(message: "Please add location",
+            alert(message: "Please click 'Add Current Location' ",
                   title: "Current Location Not Added")
             
         }else{
@@ -232,9 +234,21 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             //Double check that the image var is not nill so it does not crash
             if checkChosenImage != nil{
                 
-                HomeVC.imageArray.append(checkChosenImage!)
-                HomeVC.locationArray.append("Location")
-                navigateToHome()
+                //Make sure user adds location more clicking add
+                //This makes sure they don't use same location from before if
+                //They are posting mutiple in a close time frame without closing app
+                if addedLocation{
+                    
+                    HomeVC.imageArray.append(checkChosenImage!)
+                    HomeVC.locationArray.append("Location")
+                    navigateToHome()
+                    
+                }else{
+                    alert(message: "Please click 'Add Current Location' ",
+                          title: "Current Location Not Added")
+                    
+                }
+                
                 
             }
             
@@ -257,6 +271,8 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
     }
 }
+
+
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any])

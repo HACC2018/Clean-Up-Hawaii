@@ -15,6 +15,8 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
     
+   
+    
     @IBOutlet var mainCollectionView: UICollectionView!
     
     static var imageArray : [UIImage] = []
@@ -38,7 +40,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-
+        
  
     }
     
@@ -160,7 +162,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
             
         }else{
             self.alert(message: "There was no location assigned to this post",
-                       title: "Location uavailable")
+                       title: "Location Uavailable")
         }
         
         
