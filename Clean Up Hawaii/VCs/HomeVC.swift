@@ -7,17 +7,23 @@
 
 import UIKit
 import Foundation
+import MapKit
+import CoreLocation
 
 class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
-
+    
+    @IBOutlet weak var homeButton: UIBarButtonItem!
+    
     @IBOutlet var mainCollectionView: UICollectionView!
     
     static var imageArray : [UIImage] = []
     
     static var locationArray : [String] = []
     
-    let actionSheet = UIAlertController(title: "Options", message: "Please select an option", preferredStyle: .actionSheet)
+    let actionSheet = UIAlertController(title: "Options",
+                                        message: "Please select an option",
+                                        preferredStyle: .actionSheet)
     
     var loadActionsOnce = true
 
@@ -31,20 +37,25 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         //Assign Date to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
+        
+
  
     }
     
     //Number of cells
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
+        -> Int {
         
         return HomeVC.imageArray.count
         
     }
     
     //Give each cell its properties
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell (withReuseIdentifier: "cell", for: indexPath) as! FeedCollectionViewCell
+        let cell = collectionView.dequeueReusableCell (withReuseIdentifier: "cell", for: indexPath)
+            as! FeedCollectionViewCell
         
         cell.imageView.image = HomeVC.imageArray[indexPath.row]
         
@@ -66,6 +77,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
       //  cell?.layer.borderColor = UIColor.green.cgColor
         
         cell?.layer.borderWidth = 0.5
+      //  cell?.backgroundColor? = UIColor.white
         
         if loadActionsOnce{
             
@@ -89,6 +101,8 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         cell?.layer.borderColor = UIColor.darkGray.cgColor
         
+      //  cell?.backgroundColor = UIColor.black
+        
         cell?.layer.borderWidth = 0.5
     }
     
@@ -101,50 +115,24 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
        
     }
     
-    //Don't think we will need this if we our using databases to pull the info
-    /*
-    static func saveCells(){
-        
-       UserDefaults.standard.set(HomeVC.imageArray, forKey: "IMAGE")
-       UserDefaults.standard.set(HomeVC.locationArray, forKey: "LOCATION")
-
-    }
-    
-    
-    static func loadImages() -> ([UIImage]){
-        
-        return UserDefaults.standard.array(forKey: "IMAGE") as? [UIImage] ?? [UIImage]()
-    
-        
-    }
-    
-    static func loadLocationText() -> ([String]){
-        
-        return UserDefaults.standard.array(forKey: "LOCATION") as? [String] ?? [String]()
-        
-        
-    }*/
-    
     //MARK: Give Location and Take off feed their actions
+    
     private func addActions(title name: String){
         
 
-            actionSheet.addAction(UIAlertAction(title: "\(name)", style: .default, handler: {(action:UIAlertAction) in
+            actionSheet.addAction(UIAlertAction(title: "\(name)", style: .default, handler:
+                {(action:UIAlertAction) in
             
             if name == "Location"{
-              
-                //TODO: Present apple maps and location of the trash
-              //  self.present(imagePickerController,animated: true,completion: nil)
+                
+                self.openMaps()
    
                 
             }else{
                 
                 print("You clicked take off feed")
                 //TODO: Take cell of feed
-               
-                
-               
-           
+
             }
             
         }))
@@ -152,11 +140,37 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         
     }
-
     
+    func openMaps(){
 
-
-
+        if let latitude = AddVC.currentLocation?.coordinate.latitude,
+            let longitude = AddVC.currentLocation?.coordinate.longitude {
+            
+            let regionDistance:CLLocationDistance = 10000
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = "Trash Location"
+            mapItem.openInMaps(launchOptions: options)
+            
+        }else{
+            self.alert(message: "There was no location assigned to this post",
+                       title: "Location uavailable")
+        }
+        
+        
+    }
+    
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
-
-
