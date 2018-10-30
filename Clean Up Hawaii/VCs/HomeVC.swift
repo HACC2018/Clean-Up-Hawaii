@@ -14,13 +14,9 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
 
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
-    
-   
-    
     @IBOutlet var mainCollectionView: UICollectionView!
     
     static var imageArray : [UIImage] = []
-    
     static var locationArray : [String] = []
     
     let actionSheet = UIAlertController(title: "Options",
@@ -36,13 +32,15 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         //Hide back button
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        //Assign Date to collection view
+        //Assign Data to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-        
-        
- 
+
     }
+    
+
+    
+    
     
     //Number of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
@@ -176,3 +174,4 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     }
     
 }
+

@@ -11,6 +11,7 @@ import CoreLocation
 class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate {
     
    static var currentLocation: CLLocation?
+    
    var locManager = CLLocationManager()
     
    var addedLocation = false
@@ -251,9 +252,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 
                 
             }
-            
-            
-            
+
         }
     }
     
@@ -271,6 +270,10 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
     }
 }
+
+
+
+
 
 
 

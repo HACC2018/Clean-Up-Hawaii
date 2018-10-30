@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		876E3D2AC7B2D75FF5E929CC /* Pods_Clean_Up_Hawaii.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D502DCBCDDF5B81CE577452 /* Pods_Clean_Up_Hawaii.framework */; };
 		DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845472119079700B9DD00 /* AppDelegate.swift */; };
 		DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845492119079700B9DD00 /* HomeVC.swift */; };
 		DA98454D2119079700B9DD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA98454B2119079700B9DD00 /* Main.storyboard */; };
@@ -15,12 +16,19 @@
 		DA98455A211911CD00B9DD00 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA984559211911CD00B9DD00 /* AddVC.swift */; };
 		DA98455C211911D800B9DD00 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98455B211911D800B9DD00 /* SettingVC.swift */; };
 		DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */; };
-		DA98456421192A2D00B9DD00 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA98456321192A2D00B9DD00 /* MapKit.framework */; };
 		DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845652119466B00B9DD00 /* MainNavVC.swift */; };
 		DA9845682119679E00B9DD00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9845672119679E00B9DD00 /* CoreLocation.framework */; };
+		DAA1DD0F21881A8F00558C04 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA1DD0E21881A8F00558C04 /* Post.swift */; };
+		DAE14C582188383E007CA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAE14C572188383E007CA866 /* GoogleService-Info.plist */; };
+		DAE14C5A2188442A007CA866 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14C592188442A007CA866 /* LoginVC.swift */; };
+		DAE14C5F21886A2B007CA866 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14C5E21886A2B007CA866 /* InitialVC.swift */; };
+		DAFF9E1B21890227007F40C3 /* LoginNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A156F9EBAA7C78419F6C37F /* Pods-Clean Up Hawaii.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clean Up Hawaii.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii.release.xcconfig"; sourceTree = "<group>"; };
+		112A46E8E77EAA1FC59C3F6E /* Pods-Clean Up Hawaii.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clean Up Hawaii.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii.debug.xcconfig"; sourceTree = "<group>"; };
+		5D502DCBCDDF5B81CE577452 /* Pods_Clean_Up_Hawaii.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clean_Up_Hawaii.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9845442119079700B9DD00 /* Clean Up Hawaii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clean Up Hawaii.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9845472119079700B9DD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA9845492119079700B9DD00 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -31,9 +39,13 @@
 		DA984559211911CD00B9DD00 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		DA98455B211911D800B9DD00 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
-		DA98456321192A2D00B9DD00 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA9845652119466B00B9DD00 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
 		DA9845672119679E00B9DD00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DAA1DD0E21881A8F00558C04 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DAE14C572188383E007CA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DAE14C592188442A007CA866 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		DAE14C5E21886A2B007CA866 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,19 +54,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA9845682119679E00B9DD00 /* CoreLocation.framework in Frameworks */,
-				DA98456421192A2D00B9DD00 /* MapKit.framework in Frameworks */,
+				876E3D2AC7B2D75FF5E929CC /* Pods_Clean_Up_Hawaii.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0901932ADD5ABC82F8A6E711 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				112A46E8E77EAA1FC59C3F6E /* Pods-Clean Up Hawaii.debug.xcconfig */,
+				0A156F9EBAA7C78419F6C37F /* Pods-Clean Up Hawaii.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA98453B2119079700B9DD00 = {
 			isa = PBXGroup;
 			children = (
 				DA9845462119079700B9DD00 /* Clean Up Hawaii */,
 				DA9845452119079700B9DD00 /* Products */,
 				DA98456221192A2D00B9DD00 /* Frameworks */,
+				0901932ADD5ABC82F8A6E711 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,10 +93,12 @@
 			children = (
 				DA9845472119079700B9DD00 /* AppDelegate.swift */,
 				DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */,
+				DAA1DD0E21881A8F00558C04 /* Post.swift */,
 				DA98455D211911DE00B9DD00 /* VCs */,
 				DA98454B2119079700B9DD00 /* Main.storyboard */,
 				DA98454E2119079D00B9DD00 /* Assets.xcassets */,
 				DA9845502119079D00B9DD00 /* LaunchScreen.storyboard */,
+				DAE14C572188383E007CA866 /* GoogleService-Info.plist */,
 				DA9845532119079D00B9DD00 /* Info.plist */,
 			);
 			path = "Clean Up Hawaii";
@@ -83,7 +107,10 @@
 		DA98455D211911DE00B9DD00 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				DAE14C5E21886A2B007CA866 /* InitialVC.swift */,
+				DAE14C592188442A007CA866 /* LoginVC.swift */,
 				DA9845652119466B00B9DD00 /* MainNavVC.swift */,
+				DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */,
 				DA9845492119079700B9DD00 /* HomeVC.swift */,
 				DA984559211911CD00B9DD00 /* AddVC.swift */,
 				DA98455B211911D800B9DD00 /* SettingVC.swift */,
@@ -95,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				DA9845672119679E00B9DD00 /* CoreLocation.framework */,
-				DA98456321192A2D00B9DD00 /* MapKit.framework */,
+				5D502DCBCDDF5B81CE577452 /* Pods_Clean_Up_Hawaii.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA9845562119079D00B9DD00 /* Build configuration list for PBXNativeTarget "Clean Up Hawaii" */;
 			buildPhases = (
+				AA104B10BF29AD970DD21208 /* [CP] Check Pods Manifest.lock */,
 				DA9845402119079700B9DD00 /* Sources */,
 				DA9845412119079700B9DD00 /* Frameworks */,
 				DA9845422119079700B9DD00 /* Resources */,
+				C0A42127359F649BC5240F7D /* [CP] Embed Pods Frameworks */,
+				56C3DE421BA6467E81060559 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,7 +164,7 @@
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -165,22 +195,98 @@
 			files = (
 				DA9845522119079D00B9DD00 /* LaunchScreen.storyboard in Resources */,
 				DA98454F2119079D00B9DD00 /* Assets.xcassets in Resources */,
+				DAE14C582188383E007CA866 /* GoogleService-Info.plist in Resources */,
 				DA98454D2119079700B9DD00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56C3DE421BA6467E81060559 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA104B10BF29AD970DD21208 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Clean Up Hawaii-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0A42127359F649BC5240F7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA9845402119079700B9DD00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE14C5F21886A2B007CA866 /* InitialVC.swift in Sources */,
 				DA98455A211911CD00B9DD00 /* AddVC.swift in Sources */,
 				DA98455C211911D800B9DD00 /* SettingVC.swift in Sources */,
+				DAE14C5A2188442A007CA866 /* LoginVC.swift in Sources */,
 				DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */,
 				DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */,
 				DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */,
+				DAFF9E1B21890227007F40C3 /* LoginNavVC.swift in Sources */,
+				DAA1DD0F21881A8F00558C04 /* Post.swift in Sources */,
 				DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -312,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -323,6 +429,7 @@
 		};
 		DA9845572119079D00B9DD00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 112A46E8E77EAA1FC59C3F6E /* Pods-Clean Up Hawaii.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -344,6 +451,7 @@
 		};
 		DA9845582119079D00B9DD00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A156F9EBAA7C78419F6C37F /* Pods-Clean Up Hawaii.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
