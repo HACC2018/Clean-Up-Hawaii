@@ -372,22 +372,6 @@
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="1197.7832512315272"/>
         </scene>
-        <!--LoginVC-->
-        <scene sceneID="AWG-lz-d0A">
-            <objects>
-                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pbM-e8-w1t" customClass="LoginVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="b8W-IF-aM7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="aW9-nF-SAK"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="rvk-fK-KfH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pym-56-ixs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1955" y="361"/>
-        </scene>
         <!--InitialVC-->
         <scene sceneID="fTW-tv-eBf">
             <objects>
@@ -414,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYO-Rk-VyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="-1238"/>
+            <point key="canvasLocation" x="-4" y="-1290"/>
         </scene>
         <!--Main NavVC-->
         <scene sceneID="OmJ-dQ-umv">
@@ -448,24 +432,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXf-Zg-BeR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4" y="-465"/>
-        </scene>
-        <!--Login NavVC-->
-        <scene sceneID="O3a-bL-3VH">
-            <objects>
-                <navigationController storyboardIdentifier="LoginNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fYG-Z1-1ix" customClass="LoginNavVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dRs-sH-6g0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pbM-e8-w1t" kind="relationship" relationship="rootViewController" id="v6P-dH-sNC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="32F-G2-BIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1955" y="-465"/>
         </scene>
     </scenes>
     <resources>

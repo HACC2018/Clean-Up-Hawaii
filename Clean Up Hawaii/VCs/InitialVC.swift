@@ -11,29 +11,19 @@ class InitialVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        loadLoginState()
+        
+        //Go To main Navigation VIew Controller
+        self.goTo("MainNavVC", animate: false)
 
     }
+ 
+}
+
+//Various Methods
+extension InitialVC{
     
-    //Check the login state of the user
-    func loadLoginState(){
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                
-                self.goTo("MainNavVC", animate: false)
-                print("User is NOT nil")
-                
-            } else {
-                self.goTo("LoginNavVC", animate: false)
-                print("User is nil")
-                
-            }
-        }
-    }
-    
-    
-    func goTo(_ view: String, animate: Bool){
+    //Help Direct Initial VC to Navigation Controller
+    private func goTo(_ view: String, animate: Bool){
         
         OperationQueue.main.addOperation {
             
@@ -54,11 +44,9 @@ class InitialVC: UIViewController{
                 
             }
             
-            
-            
-            
         }
     }
+    
     
     
 }

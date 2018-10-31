@@ -9,12 +9,17 @@ import UIKit
 import Foundation
 import MapKit
 import CoreLocation
+import Firebase
+import FirebaseUI
 
-class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
-
+class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,FUIAuthDelegate {
+    
+    //Outlets and Vars
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet var mainCollectionView: UICollectionView!
+    
+     var loadActionsOnce = true
     
     static var imageArray : [UIImage] = []
     static var locationArray : [String] = []
@@ -23,12 +28,10 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
                                         message: "Please select an option",
                                         preferredStyle: .actionSheet)
     
-    var loadActionsOnce = true
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadLoginState()
         //Hide back button
         self.navigationItem.setHidesBackButton(true, animated:true)
         
@@ -37,11 +40,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         mainCollectionView.dataSource = self
 
     }
-    
 
-    
-    
-    
     //Number of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
@@ -106,35 +105,31 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         cell?.layer.borderWidth = 0.5
     }
     
-   
-    //TODO: Update clean feed after somebody adds somthing
-    override func viewWillAppear(_ animated: Bool) {
-        
-        //TODO: Update the UI so it shows the persons new additon
-        
-       
-    }
     
-    //MARK: Give Location and Take off feed their actions
+
+
+}
+
+//Various Methods
+extension HomeVC{
     
+    //MARK: When USER selects post
     private func addActions(title name: String){
         
-
-            actionSheet.addAction(UIAlertAction(title: "\(name)", style: .default, handler:
-                {(action:UIAlertAction) in
-            
-            if name == "Location"{
+        actionSheet.addAction(UIAlertAction(title: "\(name)", style: .default, handler:
+            {(action:UIAlertAction) in
                 
-                self.openMaps()
-   
+                if name == "Location"{
+                    
+                    self.openMaps()
+                    
+                }else{
+                    
+                    print("You clicked take off feed")
+                    //TODO: Take cell of feed
+                    
+                }
                 
-            }else{
-                
-                print("You clicked take off feed")
-                //TODO: Take cell of feed
-
-            }
-            
         }))
         
         
@@ -142,7 +137,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     func openMaps(){
-
+        
         if let latitude = AddVC.currentLocation?.coordinate.latitude,
             let longitude = AddVC.currentLocation?.coordinate.longitude {
             
@@ -173,5 +168,68 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    
+}
+//FireBase Authentication Code
+extension HomeVC{
+    
+    //Check the login state of the user
+    func loadLoginState(){
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+               //User is already logged in
+                print("User is NOT nil")
+                
+            } else {
+                self.loadLogin()
+                print("User is nil")
+                
+            }
+        }
+    }
+    
+    //Display FireBase Auth. UI
+    func loadLogin(){
+        
+        let authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        
+        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
+        authUI?.providers = providers
+        
+        if let authViewController = authUI?.authViewController(){
+            self.present(authViewController, animated: false, completion: nil)
+            print("Present")
+            
+        }else{
+            print("No present")
+        }
+    }
+    
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
+        // other URL handling goes here.
+        return false
+    }
+    
+    //Handle Errors with loging in here
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        //Handle Errors here
+    }
+    
+}
+
+//MARK: Extenion is used to edit FireBase Authentication UI
+extension FUIAuthBaseViewController{
+    open override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.title = "Hawai'i CleanUp Login"
+    }
 }
 

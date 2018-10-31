@@ -20,9 +20,7 @@
 		DA9845682119679E00B9DD00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9845672119679E00B9DD00 /* CoreLocation.framework */; };
 		DAA1DD0F21881A8F00558C04 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA1DD0E21881A8F00558C04 /* Post.swift */; };
 		DAE14C582188383E007CA866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAE14C572188383E007CA866 /* GoogleService-Info.plist */; };
-		DAE14C5A2188442A007CA866 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14C592188442A007CA866 /* LoginVC.swift */; };
 		DAE14C5F21886A2B007CA866 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE14C5E21886A2B007CA866 /* InitialVC.swift */; };
-		DAFF9E1B21890227007F40C3 /* LoginNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,9 +41,7 @@
 		DA9845672119679E00B9DD00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DAA1DD0E21881A8F00558C04 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DAE14C572188383E007CA866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DAE14C592188442A007CA866 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DAE14C5E21886A2B007CA866 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
-		DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE14C5E21886A2B007CA866 /* InitialVC.swift */,
-				DAE14C592188442A007CA866 /* LoginVC.swift */,
 				DA9845652119466B00B9DD00 /* MainNavVC.swift */,
-				DAFF9E1A21890227007F40C3 /* LoginNavVC.swift */,
 				DA9845492119079700B9DD00 /* HomeVC.swift */,
 				DA984559211911CD00B9DD00 /* AddVC.swift */,
 				DA98455B211911D800B9DD00 /* SettingVC.swift */,
@@ -281,11 +275,9 @@
 				DAE14C5F21886A2B007CA866 /* InitialVC.swift in Sources */,
 				DA98455A211911CD00B9DD00 /* AddVC.swift in Sources */,
 				DA98455C211911D800B9DD00 /* SettingVC.swift in Sources */,
-				DAE14C5A2188442A007CA866 /* LoginVC.swift in Sources */,
 				DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */,
 				DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */,
 				DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */,
-				DAFF9E1B21890227007F40C3 /* LoginNavVC.swift in Sources */,
 				DAA1DD0F21881A8F00558C04 /* Post.swift in Sources */,
 				DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */,
 			);

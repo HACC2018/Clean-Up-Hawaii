@@ -20,7 +20,6 @@ class SettingsVC: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
  
     }
-    
 
     @IBAction func pressedSignOut(_ sender: Any) {
         do{
@@ -32,10 +31,5 @@ class SettingsVC: UIViewController {
         }
         
     }
-    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        // handle user and error as necessary
-    }
-    
 
-    
 }

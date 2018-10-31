@@ -161,23 +161,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
     }
     
-    //Call to Segue to homepage
-    private func navigateToHome(){
-        
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        guard let navigationVC = mainStoryboard.instantiateViewController(withIdentifier: "MainNavVC")
-            as? MainNavVC else{
-
-            return
-            
-        }
-        
-        present(navigationVC, animated: true, completion: nil)
-    }
-    
-
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
@@ -200,6 +183,13 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         picker.dismiss(animated: true, completion: nil)
         
     }
+  
+    
+}
+
+
+//Various Methods
+extension AddVC{
     
     //Push alert to user
     func alert(message: String, title: String = "") {
@@ -208,6 +198,23 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    //Call to Segue to homepage
+    private func navigateToHome(){
+        
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let navigationVC = mainStoryboard.instantiateViewController(withIdentifier: "MainNavVC")
+            as? MainNavVC else{
+                
+                return
+                
+        }
+        
+        present(navigationVC, animated: true, completion: nil)
+    }
+    
     
     private func validatePost(){
         
@@ -252,11 +259,10 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 
                 
             }
-
+            
         }
     }
-    
-    func confirmationButtons(index: Int, confirm: Bool){
+    private func confirmationButtons(index: Int, confirm: Bool){
         
         if confirm{
             
@@ -269,11 +275,8 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
         
     }
+    
 }
-
-
-
-
 
 
 
