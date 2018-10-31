@@ -9,6 +9,7 @@ target 'Clean Up Hawaii' do
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
   pod 'Firebase/Core'
+  pod 'Firebase/Storage'
 
 
 
