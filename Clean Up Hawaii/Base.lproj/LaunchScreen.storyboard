@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="y6M-60-sZM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-eB-D3L">
                                 <rect key="frame" x="67.666666666666686" y="292" width="240" height="228"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="JkI-vl-lhS"/>
-                                    <constraint firstAttribute="height" constant="228" id="jmk-sS-39v"/>
+                                    <constraint firstAttribute="width" constant="240" id="aOP-Hx-Wa3"/>
+                                    <constraint firstAttribute="height" constant="228" id="lrx-0G-8Q3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.41176470588235292" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="y6M-60-sZM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KOF-NR-sff"/>
-                            <constraint firstItem="y6M-60-sZM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aCl-7X-KK8"/>
+                            <constraint firstItem="hBF-eB-D3L" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3e6-ZE-m7O"/>
+                            <constraint firstItem="hBF-eB-D3L" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="tQX-LJ-wzh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appIcon" width="1536" height="1536"/>
+        <image name="transIcon" width="1024" height="1024"/>
     </resources>
 </document>

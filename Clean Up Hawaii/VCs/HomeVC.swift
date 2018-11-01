@@ -19,7 +19,9 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet var mainCollectionView: UICollectionView!
     
-     var loadActionsOnce = true
+
+    
+    var loadActionsOnce = true
     
     static var imageArray : [UIImage] = []
     static var locationArray : [String] = []
@@ -136,7 +138,7 @@ extension HomeVC{
         
     }
     
-    func openMaps(){
+    private func openMaps(){
         
         if let latitude = AddVC.currentLocation?.coordinate.latitude,
             let longitude = AddVC.currentLocation?.coordinate.longitude {

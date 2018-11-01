@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Clean Feed-->
+        <!--CleanUp Feed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pAH-R7-DKl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0FU-yB-qec">
                                     <size key="itemSize" width="407" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -92,7 +92,7 @@
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="pIg-hz-a5f"/>
-                        <barButtonItem image="addButton" id="o40-ph-ENJ">
+                        <barButtonItem image="profileButton" id="o40-ph-ENJ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="G8I-9H-Iyk" kind="show" id="bAV-nG-ivj"/>
@@ -106,12 +106,12 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Clean Feed" id="b54-TO-5yL">
+                    <navigationItem key="navigationItem" title="CleanUp Feed" id="b54-TO-5yL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="laf-Sx-1aT"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="homeButton" destination="qGr-ip-VFm" id="u1R-J2-YXo"/>
+                        <outlet property="homeButton" destination="qGr-ip-VFm" id="wkt-fN-XeH"/>
                         <outlet property="mainCollectionView" destination="pAH-R7-DKl" id="RJf-J3-KIg"/>
                     </connections>
                 </viewController>
@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="-4" y="361"/>
         </scene>
-        <!--Add to Feed-->
+        <!--My Posts-->
         <scene sceneID="QhP-Xa-Hdx">
             <objects>
                 <viewController storyboardIdentifier="AddVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G8I-9H-Iyk" customClass="AddVC" customModule="Clean_Up_Hawaii" customModuleProvider="target" sceneMemberID="viewController">
@@ -223,7 +223,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aAz-6I-WRa" firstAttribute="centerY" secondItem="7v4-3W-bp4" secondAttribute="centerY" constant="145" id="4Kd-zO-rZh"/>
                             <constraint firstItem="g8m-in-pxv" firstAttribute="bottom" secondItem="9su-Um-MYW" secondAttribute="bottom" id="6rE-AS-oBs"/>
@@ -240,32 +240,36 @@
                         <viewLayoutGuide key="safeArea" id="9su-Um-MYW"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Item" image="homeButton" id="XO8-F0-uLo">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem title="Item" image="homeButton" id="j8s-ne-UJw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="Ixs-wR-aUa"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="vtU-ZB-nbV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BJP-EB-IAv"/>
-                        <barButtonItem title="Item" image="addButton" id="M7u-rh-njn">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="UOB-VK-RA6"/>
+                        <barButtonItem title="Item" image="profileButton" id="U6L-lS-qyp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                     <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ew1-se-Svj"/>
-                        <barButtonItem title="Item" image="settingsButton" id="IC4-d6-IQE">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="boh-Rx-4UO"/>
+                        <barButtonItem title="Item" image="settingsButton" id="C3m-Ya-1zo">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="kfE-XQ-AnC" kind="show" id="oZ0-7t-Xn1"/>
+                                <segue destination="kfE-XQ-AnC" kind="show" id="pli-ci-ggr"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Add to Feed" id="r0H-Bc-IDa">
+                    <navigationItem key="navigationItem" title="My Posts" id="r0H-Bc-IDa">
                         <barButtonItem key="backBarButtonItem" title="Back" id="JAe-kU-H2A"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="addButton" id="QBg-RJ-4tN">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chosenImageView" destination="I6L-eo-KPI" id="vO6-dN-xx5"/>
@@ -330,7 +334,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Gob-TE-uob" firstAttribute="centerX" secondItem="sgI-RB-CW6" secondAttribute="centerX" id="98i-Ib-aUU"/>
                             <constraint firstItem="Gob-TE-uob" firstAttribute="centerY" secondItem="sgI-RB-CW6" secondAttribute="centerY" id="TDD-5Q-MIX"/>
@@ -347,7 +351,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="475-80-iNI"/>
-                        <barButtonItem title="Item" image="addButton" id="71l-po-KAj">
+                        <barButtonItem title="Item" image="profileButton" id="71l-po-KAj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="G8I-9H-Iyk" kind="show" id="O0U-22-ggm"/>
@@ -380,7 +384,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gem-eD-UnP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gem-eD-UnP">
                                 <rect key="frame" x="87" y="334" width="240" height="228"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Ct6-Yf-Bll"/>
@@ -388,7 +392,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Gem-eD-UnP" firstAttribute="centerX" secondItem="bch-o3-i72" secondAttribute="centerX" id="Wlz-y4-bMo"/>
                             <constraint firstItem="Gem-eD-UnP" firstAttribute="centerY" secondItem="bch-o3-i72" secondAttribute="centerY" id="ery-MU-zCg"/>
@@ -409,9 +413,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.23529411764705882" green="0.72156862745098038" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="22"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
@@ -423,7 +427,7 @@
                         <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.23529411764705882" green="0.72156862745098038" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.23529411759999999" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.050980392159999999" green="0.41176470590000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WLe-Qc-Whi"/>
@@ -435,11 +439,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addButton" width="168" height="170"/>
-        <image name="appIcon" width="1536" height="1536"/>
-        <image name="homeButton" width="159" height="163"/>
+        <image name="addButton" width="48" height="45.840000152587891"/>
+        <image name="homeButton" width="72" height="73"/>
+        <image name="profileButton" width="72" height="72.480003356933594"/>
         <image name="redX" width="840" height="895"/>
-        <image name="settingsButton" width="150" height="160"/>
+        <image name="settingsButton" width="72" height="74.160003662109375"/>
+        <image name="transIcon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="riD-TH-2Fc"/>
