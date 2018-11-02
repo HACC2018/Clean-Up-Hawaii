@@ -38,7 +38,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Will you allow this app to always know your location?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your current location will be used so others can located where the trash is from your post.</string>
+	<string>Your current location will be used so others can locate where the trash is from your post.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Choose image of dirty site</string>
 	<key>UILaunchStoryboardName</key>

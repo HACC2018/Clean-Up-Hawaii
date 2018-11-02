@@ -16,8 +16,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
    var addedLocation = false
     
-    //Outlets and variables
-    @IBOutlet var confirmationOutlets: [UIImageView]!
+
     
     @IBOutlet var chosenImageView: UIImageView!
     
@@ -32,18 +31,22 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Hide back button
-        self.navigationItem.setHidesBackButton(true, animated:true)
-
+        getLocation()
+        
+        
+        if AddVC.currentLocation != nil{
+            
+            addedLocation = true
+        }
+        
        
+        
+ 
     }
     
     //Location not found
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Unable to access your current location")
-        
-        //Don't Confirm
-        confirmationButtons(index: 1, confirm: false)
         
         //Tell user why location cant be determined
         alert(message: "Please turn on location services for this app in settings",
@@ -113,16 +116,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
     }
     
-    //MARK: Map button is pressed
-    @IBAction func mapPressed(_ sender: Any) {
-       
-        getLocation()
-        
-        addedLocation = true
-   
-
-    }
-    
     private func getLocation(){
         
         //This will locate their current location on apple maps
@@ -138,9 +131,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 self.locationManager.requestWhenInUseAuthorization()
 
             }
-            
-            //Confirmation green check
-            confirmationButtons(index: 1, confirm: true)
             
             //Store location in variable
             AddVC.currentLocation = locManager.location
@@ -170,9 +160,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
         chosenImageView.image = image
-        
-        //Confirm Image was selected
-        confirmationButtons(index: 0, confirm: true)
         
         picker.dismiss(animated: true, completion: nil)
         
@@ -215,7 +202,6 @@ extension AddVC{
         present(navigationVC, animated: true, completion: nil)
     }
     
-    
     private func validatePost(){
         
         //Used to check if value is nil
@@ -231,8 +217,8 @@ extension AddVC{
         }
         if checkCurrentLocation == nil{
             
-            alert(message: "Please click 'Add Current Location' ",
-                  title: "Current Location Not Added")
+            alert(message: "Please turn on location services for this app in settings",
+                  title: "Location Services Disabled")
             
         }else{
             
@@ -252,8 +238,8 @@ extension AddVC{
                     navigateToHome()
                     
                 }else{
-                    alert(message: "Please click 'Add Current Location' ",
-                          title: "Current Location Not Added")
+                    alert(message: "Please turn on location services for this app in settings",
+                          title: "Location Services Disabled")
                     
                 }
                 
@@ -261,19 +247,6 @@ extension AddVC{
             }
             
         }
-    }
-    private func confirmationButtons(index: Int, confirm: Bool){
-        
-        if confirm{
-            
-            confirmationOutlets[index].image = UIImage(named: "greenCheck")
-        }else{
-            
-            confirmationOutlets[index].image = UIImage(named: "redX")
-            
-        }
-        
-        
     }
     
 }
