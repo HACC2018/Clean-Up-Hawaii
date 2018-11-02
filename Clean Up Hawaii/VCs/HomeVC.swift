@@ -231,7 +231,11 @@ extension HomeVC{
 extension FUIAuthBaseViewController{
     open override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.leftBarButtonItem = nil
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.4826237559, blue: 0.4760034084, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white
+            ,NSAttributedString.Key.font : UIFont(name: "NoteWorthy", size: 22.0)!]
         self.navigationItem.title = "Hawai'i CleanUp Login"
+        self.view.backgroundColor = #colorLiteral(red: 0, green: 0.4826237559, blue: 0.4760034084, alpha: 1)
     }
 }
 
