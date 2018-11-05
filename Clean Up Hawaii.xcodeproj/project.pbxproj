@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		876E3D2AC7B2D75FF5E929CC /* Pods_Clean_Up_Hawaii.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D502DCBCDDF5B81CE577452 /* Pods_Clean_Up_Hawaii.framework */; };
+		DA323EA22190134C00B0D91F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA323EA12190134C00B0D91F /* AboutVC.swift */; };
+		DA4D53A4218D596A00334DC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D53A3218D596A00334DC5 /* User.swift */; };
 		DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845472119079700B9DD00 /* AppDelegate.swift */; };
 		DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9845492119079700B9DD00 /* HomeVC.swift */; };
 		DA98454D2119079700B9DD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA98454B2119079700B9DD00 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		0A156F9EBAA7C78419F6C37F /* Pods-Clean Up Hawaii.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clean Up Hawaii.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii.release.xcconfig"; sourceTree = "<group>"; };
 		112A46E8E77EAA1FC59C3F6E /* Pods-Clean Up Hawaii.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clean Up Hawaii.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clean Up Hawaii/Pods-Clean Up Hawaii.debug.xcconfig"; sourceTree = "<group>"; };
 		5D502DCBCDDF5B81CE577452 /* Pods_Clean_Up_Hawaii.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clean_Up_Hawaii.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA323EA12190134C00B0D91F /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		DA4D53A3218D596A00334DC5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DA9845442119079700B9DD00 /* Clean Up Hawaii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clean Up Hawaii.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9845472119079700B9DD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA9845492119079700B9DD00 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				DA98456021191BE800B9DD00 /* FeedCollectionViewCell.swift */,
 				DAD26EB9218C0D280022DF06 /* ProfileCollectionViewCell.swift */,
 				DAA1DD0E21881A8F00558C04 /* Post.swift */,
+				DA4D53A3218D596A00334DC5 /* User.swift */,
 				DA98455D211911DE00B9DD00 /* VCs */,
 				DA98454B2119079700B9DD00 /* Main.storyboard */,
 				DA98454E2119079D00B9DD00 /* Assets.xcassets */,
@@ -114,6 +119,7 @@
 				DAD26EB7218C037D0022DF06 /* ProfileVC.swift */,
 				DA984559211911CD00B9DD00 /* AddVC.swift */,
 				DA98455B211911D800B9DD00 /* SettingVC.swift */,
+				DA323EA12190134C00B0D91F /* AboutVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -286,8 +292,10 @@
 				DA98456121191BE800B9DD00 /* FeedCollectionViewCell.swift in Sources */,
 				DA98454A2119079700B9DD00 /* HomeVC.swift in Sources */,
 				DA9845482119079700B9DD00 /* AppDelegate.swift in Sources */,
+				DA323EA22190134C00B0D91F /* AboutVC.swift in Sources */,
 				DAA1DD0F21881A8F00558C04 /* Post.swift in Sources */,
 				DA9845662119466B00B9DD00 /* MainNavVC.swift in Sources */,
+				DA4D53A4218D596A00334DC5 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

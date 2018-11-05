@@ -13,4 +13,9 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var locationLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var userLabel: UILabel!
+    
+    
 }

@@ -15,11 +15,11 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBOutlet var profileCollectionView: UICollectionView!
     
     var loadActionsOnce = true
-    
+    static var profilePosts: [Post] = []
     let actionSheet = UIAlertController(title: "Options",
                                         message: "Please select an option",
                                         preferredStyle: .actionSheet)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +37,7 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
             
-            return HomeVC.imageArray.count
+            return ProfileVC.profilePosts.count
             
     }
     
@@ -48,9 +48,16 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
             let cell = collectionView.dequeueReusableCell (withReuseIdentifier: "cell", for: indexPath)
                 as! ProfileCollectionViewCell
             
-            cell.imageView.image = HomeVC.imageArray[indexPath.row]
+            let post = ProfileVC.profilePosts[indexPath.row]
             
-            cell.locationLabel.text = HomeVC.locationArray[indexPath.row]
+            //Give each cell their properties
+            cell.imageView.image = post.image
+            
+            cell.locationLabel.text = "\(post.city), \(post.state)"
+            
+            cell.userLabel.text = "\(post.userName)"
+            
+            cell.titleLabel.text = "\(post.title)"
             
             cell.layer.borderColor = UIColor.darkGray.cgColor
             
@@ -65,10 +72,7 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
         
         let cell = collectionView.cellForItem(at: indexPath)
         
-        //  cell?.layer.borderColor = UIColor.green.cgColor
-        
         cell?.layer.borderWidth = 0.5
-        //  cell?.backgroundColor? = UIColor.white
         
         if loadActionsOnce{
             

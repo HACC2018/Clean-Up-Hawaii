@@ -11,24 +11,37 @@ import CoreLocation
 
 class Post{
     
-    /*
+    
     var image : UIImage
     var title : String = ""
     var userName: String = ""
     var location : CLLocation
-    */
+    var state : String
+    var city : String
+    var date: Date
     
-    /*
-    init(image: String, title: String, userName: String, lat: CGFLoat, long: CGFloat){
-        
-        self.image = UIImage(contentsOfFile: image)
+    
+    
+    init(_ image: UIImage, _ title: String,_ city: String, _ state: String, _ userName: String, _ location : CLLocation){
+     
+        self.image = image
         self.title = title
-        self.userName = userName
-        self.location = CLLocation(latitude: lat, longitude: long)
+        self.userName = "Posted By: \(userName)"
+        self.location = location
+        self.date = Date()
+        self.city = city
+        self.state = state
+
+    }
+    
+    func push(){
         
- 
-        
-    }*/
+    }
+    
+    static func pull() -> [Post]{
+        let posts : [Post] = []
+        return posts
+    }
     
     
     

@@ -8,40 +8,66 @@
 import UIKit
 import CoreLocation
 
-class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate {
-    
-   static var currentLocation: CLLocation?
-    
-   var locManager = CLLocationManager()
-    
-   var addedLocation = false
-    
+class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate,UITextFieldDelegate {
 
-    
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var cityTextField: UITextField!
+    @IBOutlet private weak var stateTextField: UITextField!
     @IBOutlet var chosenImageView: UIImageView!
+    @IBOutlet weak var postOutlet: UIButton!
+    
+    static var currentLocation: CLLocation?
+    private var showTempImage = true
+    private var locManager = CLLocationManager()
+    private var addedLocation = false
+    private var loadActionsOnce = true
+    private var locationManager = CLLocationManager()
     
     let actionSheet = UIAlertController(title: "Photo Source",
                                         message: "Choose a source",
                                         preferredStyle: .actionSheet)
-    
-    var loadActionsOnce = true
-    
-    var locationManager = CLLocationManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //If you tap out of textfield, textfield will dissappear
+        self.hideKeyboard()
+        
         getLocation()
         
+       
+    
+        configureTextFields()
+        setTextFieldTags()
         
         if AddVC.currentLocation != nil{
             
             addedLocation = true
         }
-        
-       
-        
  
+    }
+        //Character Limit in each text field
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let maxLength = 20
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+        
+    }
+    
+    //What happens when you hit retun on text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0{
+            cityTextField.becomeFirstResponder()
+        }else if textField.tag == 1{
+            stateTextField.becomeFirstResponder()
+        }else{
+            textField.resignFirstResponder()
+            self.navigationController?.navigationBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        return false
     }
     
     //Location not found
@@ -53,7 +79,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
               title: "Location Services Disabled")
     }
     
-
+    
     @IBAction func pickImagePressed(_ sender: Any) {
 
         //Create and present action sheet
@@ -116,12 +142,8 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         
     }
     
+    //Get user's current location
     private func getLocation(){
-        
-        //This will locate their current location on apple maps
-        //This does ask permission before locating User (Asking permission is done in Info.plst)
-        //TODO: If they choose no for location, need to make sure we tell them where to go to turn it on
-        
         if CLLocationManager.locationServicesEnabled() == true {
             
             if CLLocationManager.authorizationStatus() == .restricted ||
@@ -138,46 +160,50 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             self.locationManager.desiredAccuracy = 1.0
             self.locationManager.delegate = self
             self.locationManager.startUpdatingLocation()
-            
-       
-            
         } else {
             //TODO: This is not working
             alert(message: "Please go to your settings and turn on Location Services",
                   title: "Turn On Location Services")
         }
-        
- 
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        
         let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
         chosenImageView.image = image
+        showTempImage = false
+      
         
         picker.dismiss(animated: true, completion: nil)
         
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
         picker.dismiss(animated: true, completion: nil)
-        
     }
-  
-    
 }
 
 
 //Various Methods
 extension AddVC{
     
+    private func configureTextFields(){
+        
+        self.titleTextField.delegate = self
+        self.cityTextField.delegate = self
+        self.stateTextField.delegate = self
+        
+        
+    }
+    private func setTextFieldTags(){
+        titleTextField.tag = 0
+        cityTextField.tag = 1
+        stateTextField.tag = 2
+        
+    }
     //Push alert to user
     func alert(message: String, title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -201,58 +227,37 @@ extension AddVC{
         
         present(navigationVC, animated: true, completion: nil)
     }
-    
+
     private func validatePost(){
-        
-        //Used to check if value is nil
-        let checkChosenImage = chosenImageView.image
+
         let checkCurrentLocation = AddVC.currentLocation
         
-        if checkChosenImage == nil{
-            
-            alert(message: "Please select an image before posting to feed",
-                  title: "No Image Selected")
-            
-            
-        }
+        //Always check if current location is added
         if checkCurrentLocation == nil{
             
             alert(message: "Please turn on location services for this app in settings",
                   title: "Location Services Disabled")
             
-        }else{
+        }
+        
+        if let image = chosenImageView.image, let title = titleTextField.text, !title.isEmpty,let city = cityTextField.text, !city.isEmpty, let state = stateTextField.text,!state.isEmpty,addedLocation,showTempImage == false{
             
-            //TODO: Shift everythign to the rigHT ONE AND ADD new post at top of feed
+                    //Create Post
+                    let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!)
             
-            //Without this if statment app will crash if you add location but not image
-            //Double check that the image var is not nill so it does not crash
-            if checkChosenImage != nil{
-                
-                //Make sure user adds location more clicking add
-                //This makes sure they don't use same location from before if
-                //They are posting mutiple in a close time frame without closing app
-                if addedLocation{
-                    
-                    HomeVC.imageArray.append(checkChosenImage!)
-                    HomeVC.locationArray.append("Location")
+                    //Add to Feed Array
+                    HomeVC.posts.append(post)
+            
+                    //Add to Profile Array
+                    ProfileVC.profilePosts.append(post)
+            
+                    //Go to home page
                     navigateToHome()
-                    
-                }else{
-                    alert(message: "Please turn on location services for this app in settings",
-                          title: "Location Services Disabled")
-                    
-                }
-                
-                
-            }
-            
+        }else{
+            alert(message: "Please check you added a title, city, state, and an image to your post.", title: "Missing Post Information")
         }
     }
-    
 }
-
-
-
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any])
     -> [String: Any] {
@@ -263,4 +268,24 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey)
     -> String {
 	return input.rawValue
+}
+
+
+//Detect tapping when user wants to get out of textfield
+extension AddVC
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(AddVC.dismissKeyboard))
+        
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
 }

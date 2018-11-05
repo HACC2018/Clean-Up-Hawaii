@@ -15,17 +15,14 @@ import FirebaseUI
 class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,FUIAuthDelegate {
     
     //Outlets and Vars
-    
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet var mainCollectionView: UICollectionView!
     
-
-    
     var loadActionsOnce = true
-    
+    static var userIsDeleted = false
+    static var posts: [Post] = []
     static var imageArray : [UIImage] = []
     static var locationArray : [String] = []
-    
     let actionSheet = UIAlertController(title: "Options",
                                         message: "Please select an option",
                                         preferredStyle: .actionSheet)
@@ -34,12 +31,15 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         super.viewDidLoad()
         
         loadLoginState()
+
         //Hide back button
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         //Assign Data to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
+        
+       // HomeVC.posts = Post.pull()//Pulls every post for all users
 
     }
 
@@ -47,7 +47,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
         
-        return HomeVC.imageArray.count
+        return HomeVC.posts.count
         
     }
     
@@ -57,15 +57,22 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         let cell = collectionView.dequeueReusableCell (withReuseIdentifier: "cell", for: indexPath)
             as! FeedCollectionViewCell
+            
+        let post = HomeVC.posts[indexPath.row]
         
-        cell.imageView.image = HomeVC.imageArray[indexPath.row]
+        //Give each cell their properties
+        cell.imageView.image = post.image
         
-        cell.locationLabel.text = HomeVC.locationArray[indexPath.row]
+        cell.locationLabel.text = "\(post.city), \(post.state)"
+            
+        cell.userLabel.text = "\(post.userName)"
+        
+        cell.titleLabel.text = "\(post.title)"
         
         cell.layer.borderColor = UIColor.darkGray.cgColor
         
         cell.layer.borderWidth = 0.5
-        
+            
         return cell
         
     }
@@ -75,10 +82,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         let cell = collectionView.cellForItem(at: indexPath)
         
-      //  cell?.layer.borderColor = UIColor.green.cgColor
-        
         cell?.layer.borderWidth = 0.5
-      //  cell?.backgroundColor? = UIColor.white
         
         if loadActionsOnce{
             
@@ -101,8 +105,6 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         let cell = collectionView.cellForItem(at: indexPath)
         
         cell?.layer.borderColor = UIColor.darkGray.cgColor
-        
-      //  cell?.backgroundColor = UIColor.black
         
         cell?.layer.borderWidth = 0.5
     }
@@ -176,15 +178,31 @@ extension HomeVC{
 }
 //FireBase Authentication Code
 extension HomeVC{
+
+    //If admin deletes user account, it will bring them back to login
     
+    /*
+    private func deleteUser(){
+        
+        
+        
+        Auth.auth().currentUser?.delete(completion: { (err) in
+            
+            HomeVC.userIsDeleted = true
+
+            //Logout User
+            //self.loadLogin()
+        })
+        
+        
+    }*/
+
     //Check the login state of the user
     func loadLoginState(){
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
-               //User is already logged in
                 print("User is NOT nil")
-                
-            } else {
+            }else {
                 self.loadLogin()
                 print("User is nil")
                 
@@ -202,7 +220,9 @@ extension HomeVC{
         authUI?.providers = providers
         
         if let authViewController = authUI?.authViewController(){
+            
             self.present(authViewController, animated: false, completion: nil)
+            
             print("Present")
             
         }else{
@@ -223,19 +243,34 @@ extension HomeVC{
     //Handle Errors with loging in here
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         //Handle Errors here
+        print("Error logging in  \(error?.localizedDescription ?? "Error")")
     }
     
 }
 
-//MARK: Extenion is used to edit FireBase Authentication UI
+//MARK: This Extension is used to edit FireBase Authentication UI
 extension FUIAuthBaseViewController{
     open override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.4826237559, blue: 0.4760034084, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white
             ,NSAttributedString.Key.font : UIFont(name: "NoteWorthy", size: 22.0)!]
         self.navigationItem.title = "Hawai'i CleanUp Login"
         self.view.backgroundColor = #colorLiteral(red: 0, green: 0.4826237559, blue: 0.4760034084, alpha: 1)
+        
+        /*
+        //If User was deleted
+        if HomeVC.userIsDeleted{
+            
+            alert(message: "Your account has been disabled by the developers. Creating new accounts will be unavailable",
+                  title: "Account Disabled")
+           
+
+        }*/
+       
     }
+
 }
 
