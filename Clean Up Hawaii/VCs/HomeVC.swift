@@ -39,7 +39,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-       // HomeVC.posts = Post.pull()//Pulls every post for all users
+       HomeVC.posts = Post.pullLocal("hawaii", "honolulu")
 
     }
 

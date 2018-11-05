@@ -244,12 +244,13 @@ extension AddVC{
             
                     //Create Post
                     let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!)
-            
-                    //Add to Feed Array
-                    HomeVC.posts.append(post)
-            
-                    //Add to Profile Array
-                    ProfileVC.profilePosts.append(post)
+                    post.pushPost()
+                    //Adding to the following feeds from database instead
+//                    //Add to Feed Array
+//                    HomeVC.posts.append(post)
+//            
+//                    //Add to Profile Array
+//                    ProfileVC.profilePosts.append(post)
             
                     //Go to home page
                     navigateToHome()
