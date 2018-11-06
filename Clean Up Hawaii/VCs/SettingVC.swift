@@ -57,6 +57,7 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         //Check for internet
         if Reachability.isConnectedToNetwork(){
             //PUT LINK HERE WHEN AVAIBALE ON STORE
+            alert(message: "Button will become active when app is published.", title: "Button Unavailable")
             
         }else{
             
@@ -93,13 +94,14 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
             mail.setSubject("Question From User")
             present(mail, animated: true, completion: nil)
         } else {
+            alert(message: "An error occured while trying to open mail. Please check your mailboxes.",
+                title: "Email Error")
             print("Cannot send mail")
             // give feedback to the user
         }
         
         
     }
-    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
         case MFMailComposeResult.cancelled.rawValue:
@@ -109,6 +111,8 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         case MFMailComposeResult.sent.rawValue:
             print("Sent")
         case MFMailComposeResult.failed.rawValue:
+            alert(message: "An error occured while trying to open mail. Error: \(error?.localizedDescription ?? "Error")",
+                  title: "Email Error")
             print("Error: \(String(describing: error?.localizedDescription))")
         default:
             break
