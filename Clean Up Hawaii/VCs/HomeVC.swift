@@ -38,7 +38,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         //Assign Data to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-        
+        print("Pull local")
        HomeVC.posts = Post.pullLocal("hawaii", "honolulu")
 
     }
@@ -65,7 +65,7 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         cell.locationLabel.text = "\(post.city), \(post.state)"
             
-        cell.userLabel.text = "\(post.userName)"
+        cell.userLabel.text = "\(post.name)"
         
         cell.titleLabel.text = "\(post.title)"
         
@@ -171,10 +171,6 @@ extension HomeVC{
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
-    
-    
 }
 //FireBase Authentication Code
 extension HomeVC{

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 import FirebaseDatabase
-
 class Post{
     
     var image : UIImage
@@ -35,17 +34,23 @@ class Post{
         self.location = location
         self.city = city
         self.state = state
-        self.date =
+        self.date = Date()
         self.isComplete = false
+        self.postId = "-1"
         
-        getPostId()
+        self.getPostId()
     }
+    
+//    createPost(_ image: UIImage, _ title: String,_ city: String, _ state: String, _ name: String, _ location : CLLocation){
+//        let post = Post(image,title,city,state,name,location)
+//        post.getPostId()
+//    }
     
     func pushPost(){
         var postData = [String : String]()
         
         postData["city"] = city
-        postData["date"] = date
+       // postData["date"] = date
         postData["isComplete"] = String(isComplete)
         postData["lat"] = String(location.coordinate.latitude)
         postData["long"] = String(location.coordinate.longitude)
@@ -59,17 +64,18 @@ class Post{
     static func pullPost(_ id : String) -> Post{
         var postData = [String:String]()
         for i in variables{
-            Post.ref.child(id).child(i).observeEventType(.Value){ (snap: FIRDataSnapshot) in
-                postData[i] = snap.value?.description
-            }
+            Post.ref.child(id).child(i).observeSingleEvent(of: .value, with: { (snapshot) in
+                //postData[i] = snapshot.value as? [String : AnyObject] ?? [:]
+                print("Getting ID \(id): \(snapshot.value as? [String : AnyObject] ?? [:])")
+            })
         }
         return Post(
-            UIImage(named:"postBack.png"),
-            postData["title"],
-            postData["city"],
-            postData["state"],
-            postData["name"],
-            CLLocation(latitude:Double(postData["lat"]),longitude:Double(postData["long"]))
+            UIImage(named:"tempImage.png")!,
+            postData["title"] ?? "Title",
+            postData["city"] ?? "City",
+            postData["state"] ?? "State",
+            postData["name"] ?? "Name",
+            CLLocation(latitude:Double(postData["lat"] ?? "0.0") ?? 0.0,longitude:Double(postData["long"] ?? "0.0") ?? 0.0)
         )
     }
     
@@ -88,16 +94,18 @@ class Post{
         let all = pullAllPostKeys()
         var array : [Post] = []
         for id in all{
-            var getState : Bool
-            Post.ref.child(id).child("state").observeEventType(.Value){ (snap: FIRDataSnapshot) in
-                getState = snap.value?.description == state
-            }
+            var getState : Bool = false
+            Post.ref.child(id).child("state").observeSingleEvent(of: .value, with: { (snapshot) in
+                //getState = snap.value?.description == state
+                print("STATE: \(snapshot.value as? [String : AnyObject] ?? [:])")
+            })
             if getState{
-                Post.ref.child(id).child("city").observeEventType(.Value){ (snap: FIRDataSnapshot) in
-                    if snap.value?.description == city{
-                        array.append(pullPost(id))
-                    }
-                }
+                Post.ref.child(id).child("city").observeSingleEvent(of: .value, with: { (snapshot) in
+                    print("CITY: \(snapshot.value as? [String : AnyObject] ?? [:])")
+//                    if (snap.value as AnyObject).description == city{
+//                        array.append(pullPost(id))
+//                    }
+                })
             }
         }
         return array
@@ -115,12 +123,17 @@ class Post{
 //        }
 //        return array
 //    }
-    
     func getPostId(){
-        Post.idRef.observeEventType(.Value){ (snap: FIRDataSnapshot) in
-            postId = snap.value?.description
-            Post.idRef.setValue(String(Int(postId) + 1))
-        }
+        Database.database().reference().observeSingleEvent(of: .value, with: { (snapshot) in
+            let temp = snapshot.value as? [String : AnyObject] ?? [:]
+            print("Temp: \(temp)")
+            self.postId = temp["postId"] as! String ?? "0"
+            print("Post ID: \(self.postId)")
+            if(Int(self.postId)! < 5 ){
+                Post.idRef.setValue(String(Int(self.postId)! + 1))
+                
+            }
+        })
     }
 }
 

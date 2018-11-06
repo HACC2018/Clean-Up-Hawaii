@@ -55,7 +55,7 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
             
             cell.locationLabel.text = "\(post.city), \(post.state)"
             
-            cell.userLabel.text = "\(post.userName)"
+            cell.userLabel.text = "\(post.name)"
             
             cell.titleLabel.text = "\(post.title)"
             
