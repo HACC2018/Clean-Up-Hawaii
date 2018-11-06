@@ -243,8 +243,8 @@ extension AddVC{
         if let image = chosenImageView.image, let title = titleTextField.text, !title.isEmpty,let city = cityTextField.text, !city.isEmpty, let state = stateTextField.text,!state.isEmpty,addedLocation,showTempImage == false{
             
                     //Create Post
-                    let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!)
-                    post.pushPost()
+                    let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!,nil)
+            print("Created the post")
                     //Adding to the following feeds from database instead
 //                    //Add to Feed Array
 //                    HomeVC.posts.append(post)

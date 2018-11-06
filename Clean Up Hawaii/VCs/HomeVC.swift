@@ -38,11 +38,15 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         //Assign Data to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-        print("Pull local")
-       HomeVC.posts = Post.pullLocal("hawaii", "honolulu")
-
+        
+        Post.getPostAtPath(["locations","hawaii", "honolulu","postids"],"home")
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //HomeVC.posts = []
+    }
+    
+    
     //Number of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
