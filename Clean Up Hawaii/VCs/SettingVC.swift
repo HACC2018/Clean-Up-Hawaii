@@ -35,8 +35,6 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
             alert(message: "There is no internet connection. Please check your internet connection and try again.",
                   title: "Connection Error")
         }
-        
-        
     }
     @IBAction func contactPressed(_ sender: Any) {
         
@@ -50,7 +48,6 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
             alert(message: "There is no internet connection. Please check your internet connection and try again.",
                   title: "Connection Error")
         }
- 
     }
     @IBAction func ratePressed(_ sender: Any) {
         

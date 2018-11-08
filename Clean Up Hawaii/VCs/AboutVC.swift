@@ -11,7 +11,6 @@ class AboutVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     @IBAction func visitPressed(_ sender: Any) {
         
         if Reachability.isConnectedToNetwork(){
@@ -21,7 +20,6 @@ class AboutVC: UIViewController{
                   title: "Connection Error")
         }
     }
-    
     func alert(message: String, title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)

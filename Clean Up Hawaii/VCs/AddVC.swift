@@ -214,8 +214,7 @@ extension AddVC{
     
     //Call to Segue to homepage
     private func navigateToHome(){
-        
-        
+
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         guard let navigationVC = mainStoryboard.instantiateViewController(withIdentifier: "MainNavVC")
@@ -224,8 +223,24 @@ extension AddVC{
                 return
                 
         }
-        
         present(navigationVC, animated: true, completion: nil)
+    }
+    
+    func format(_ s : String?) -> String?{
+        if s == nil{
+            return nil
+        }else{
+            let set = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz ")
+            return s!.trimmingCharacters(in: .whitespacesAndNewlines).lowercased().components(separatedBy: set.inverted).joined()
+        }
+        
+    }
+    
+    func clearPost(){
+        chosenImageView.image = UIImage(named:"tempImage.png")
+        titleTextField.text = ""
+        cityTextField.text = ""
+        stateTextField.text = ""
     }
 
     private func validatePost(){
@@ -239,24 +254,40 @@ extension AddVC{
                   title: "Location Services Disabled")
             
         }
-        
-        if let image = chosenImageView.image, let title = titleTextField.text, !title.isEmpty,let city = cityTextField.text, !city.isEmpty, let state = stateTextField.text,!state.isEmpty,addedLocation,showTempImage == false{
+        if Reachability.isConnectedToNetwork(){
             
-                    //Create Post
-                    let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!,nil)
-            print("Created the post")
-                    //Adding to the following feeds from database instead
-//                    //Add to Feed Array
-//                    HomeVC.posts.append(post)
-//            
-//                    //Add to Profile Array
-//                    ProfileVC.profilePosts.append(post)
+            if let image = chosenImageView.image,
+                let title = titleTextField.text,!title.isEmpty,
+                let city = format(cityTextField.text), !city.isEmpty,
+                let state = format(stateTextField.text),!state.isEmpty,
+                addedLocation,showTempImage == false{
+                
+                //Create Post
+                let post = Post(image,"\(title)","\(city)","\(state)",User.getName(),checkCurrentLocation!,nil)
+                alert(message: "Post was added to feed!", title: "Success!")
+                //post.saveImage()
+                print("Created the post")
+                clearPost()
+                //Adding to the following feeds from database instead
+                //                    //Add to Feed Array
+                //                    HomeVC.posts.append(post)
+                //
+                //                    //Add to Profile Array
+                //                    ProfileVC.profilePosts.append(post)
+                
+                //Go to home page
+                //navigateToHome()
+            }else{
+                alert(message: "Please check you added a title, city, state, and an image to your post.", title: "Missing Post Information")
+            }
             
-                    //Go to home page
-                    navigateToHome()
         }else{
-            alert(message: "Please check you added a title, city, state, and an image to your post.", title: "Missing Post Information")
+            
+            self.alert(message: "There is no internet connection. Please check your internet connection and try again.",
+                       title: "Connection Error")
+            
         }
+        
     }
 }
 // Helper function inserted by Swift 4.2 migrator.
@@ -270,8 +301,6 @@ fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePicke
     -> String {
 	return input.rawValue
 }
-
-
 //Detect tapping when user wants to get out of textfield
 extension AddVC
 {

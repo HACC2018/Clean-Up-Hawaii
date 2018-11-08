@@ -17,40 +17,68 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     //Outlets and Vars
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet var mainCollectionView: UICollectionView!
+    @IBOutlet weak var indicatorOutlet: UIActivityIndicatorView!
     
     var loadActionsOnce = true
+    static let refresh =  UIRefreshControl()
     static var userIsDeleted = false
     static var posts: [Post] = []
+    static var postCount = 0
     static var imageArray : [UIImage] = []
     static var locationArray : [String] = []
     let actionSheet = UIAlertController(title: "Options",
                                         message: "Please select an option",
                                         preferredStyle: .actionSheet)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        startIndicator()
+        callRefresher()
         loadLoginState()
 
         //Hide back button
         self.navigationItem.setHidesBackButton(true, animated:true)
-        
         //Assign Data to collection view
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-        Post.getPostAtPath(["locations","hawaii", "honolulu","postids"],"home")
-    }
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadFeed), name:NSNotification.Name(rawValue: "homeLoaded"), object: nil) //Connects instance method to other VC
+   
+        updateFeed()
     
+    }
     override func viewDidAppear(_ animated: Bool) {
         //HomeVC.posts = []
+      
     }
     
+    func startIndicator(){
+        indicatorOutlet.startAnimating()
+        indicatorOutlet.color = UIColor.white
+        indicatorOutlet.isHidden = false
+    }
+    func stopIndicator(){
+        indicatorOutlet.stopAnimating()
+        indicatorOutlet.isHidden = true
+    }
+    
+    @objc func updateFeed(){
+        print("Updating Feed")
+        HomeVC.posts = []
+        Post.getPostAtPath(["locations","hawaii", "honolulu","postids"],"home")
+        
+    }
+    
+    @objc func reloadFeed(){
+        print("Reload posts")
+        mainCollectionView.reloadData()
+        stopIndicator()
+    }
     
     //Number of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
-        
+            
+        print("Post Count for Collection: \(HomeVC.posts.count)")
         return HomeVC.posts.count
         
     }
@@ -62,14 +90,19 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell (withReuseIdentifier: "cell", for: indexPath)
             as! FeedCollectionViewCell
             
+        print("Calling Cell: \(indexPath.row)")
+        if indexPath.row >= HomeVC.posts.count{
+            return cell
+        }
+            
         let post = HomeVC.posts[indexPath.row]
         
         //Give each cell their properties
         cell.imageView.image = post.image
         
-        cell.locationLabel.text = "\(post.city), \(post.state)"
+        cell.locationLabel.text = "\(post.city), \(post.state)".localizedCapitalized
             
-        cell.userLabel.text = "\(post.name)"
+        cell.userLabel.text = "Posted By: \(post.name)"
         
         cell.titleLabel.text = "\(post.title)"
         
@@ -85,22 +118,16 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath)
-        
         cell?.layer.borderWidth = 0.5
         
         if loadActionsOnce{
-            
             loadActionsOnce = false
-
-            addActions(title: "Location")
-            addActions(title: "Done Cleaning (Take Off Feed)")
-            
+            addActions("Location",indexPath.row)
+            addActions("Done Cleaning (Take Off Feed)",indexPath.row)
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             
         }
-        
         self.present(actionSheet, animated: true, completion: nil)
-        
     }
     
     //Deselected Item
@@ -112,27 +139,25 @@ class HomeVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelega
         
         cell?.layer.borderWidth = 0.5
     }
-    
-    
-
-
 }
 
 //Various Methods
 extension HomeVC{
-    
+    //Refresh feed
+    private func callRefresher(){
+        HomeVC.refresh.attributedTitle = NSAttributedString(string: "")
+        HomeVC.refresh.tintColor = UIColor.white
+        HomeVC.refresh.addTarget(self, action: #selector(updateFeed), for: UIControl.Event.valueChanged)
+        //addTarget(self, action: #(updateFeed), for: .valueChanged)
+        mainCollectionView.refreshControl = HomeVC.refresh
+    }
     //MARK: When USER selects post
-    private func addActions(title name: String){
-        
+    private func addActions(_ name: String, _ index: Int){
         actionSheet.addAction(UIAlertAction(title: "\(name)", style: .default, handler:
             {(action:UIAlertAction) in
-                
                 if name == "Location"{
-                    
-                    self.openMaps()
-                    
+                    self.openMaps(HomeVC.posts[index].location)
                 }else{
-                    
                     print("You clicked take off feed")
                     //TODO: Take cell of feed
                     
@@ -144,31 +169,28 @@ extension HomeVC{
         
     }
     
-    private func openMaps(){
-        
-        if let latitude = AddVC.currentLocation?.coordinate.latitude,
-            let longitude = AddVC.currentLocation?.coordinate.longitude {
-            
-            let regionDistance:CLLocationDistance = 10000
-            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
-            let options = [
-                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-            ]
-            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = "Trash Location"
-            mapItem.openInMaps(launchOptions: options)
-            
-        }else{
-            self.alert(message: "There was no location assigned to this post",
-                       title: "Location Uavailable")
-        }
+    private func openMaps(_ currentLocation: CLLocation){
+        let latitude = currentLocation.coordinate.latitude
+        let longitude = currentLocation.coordinate.longitude
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Trash Location"
+        mapItem.openInMaps(launchOptions: options)
+//
+//        }else{
+//            self.alert(message: "There was no location assigned to this post",
+//                       title: "Location Uavailable")
+//        }
         
         
     }
-    
     func alert(message: String, title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)

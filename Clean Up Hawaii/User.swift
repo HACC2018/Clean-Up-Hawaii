@@ -10,10 +10,9 @@ import UIKit
 import CoreLocation
 import Firebase
 class User{
-    
     var email : String
     var name : String
-
+    
     init(name : String, email : String){
      
         self.name = name
@@ -32,6 +31,18 @@ class User{
     
     static func getEmail() -> String{
         return Auth.auth().currentUser?.email ?? "-Unknown-"
+    }
+    
+    static func getProcessedEmail() -> String{
+        return format(getEmail())
+    }
+    
+    static func format(_ s : String) -> String{
+
+        let set = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz1234567890 ")
+        return s.trimmingCharacters(in: .whitespacesAndNewlines).lowercased().components(separatedBy: set.inverted).joined()
+        
+        
     }
 
     

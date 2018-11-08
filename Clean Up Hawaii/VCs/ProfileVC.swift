@@ -11,11 +11,15 @@ import MapKit
 
 class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
     
+    @IBOutlet weak var indicatorOutlet: UIActivityIndicatorView!
     
     @IBOutlet var profileCollectionView: UICollectionView!
     
+    static let refresh =  UIRefreshControl()
+    
     var loadActionsOnce = true
     static var profilePosts: [Post] = []
+    static var postCount = 0
     let actionSheet = UIAlertController(title: "Options",
                                         message: "Please select an option",
                                         preferredStyle: .actionSheet)
@@ -23,14 +27,52 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startIndicator()
+        callRefresher()
         
         //Hides back button
         self.navigationItem.setHidesBackButton(true, animated:true)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfile), name:NSNotification.Name(rawValue: "profileLoaded"), object: nil) //Connects instance method to other VC
         
         //Assign Data to collection view
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
+        
+        updateProfile()
  
+    }
+    
+    //Refresh feed
+    private func callRefresher(){
+        ProfileVC.refresh.attributedTitle = NSAttributedString(string: "")
+        ProfileVC.refresh.tintColor = UIColor.white
+        ProfileVC.refresh.addTarget(self, action: #selector(updateProfile), for: UIControl.Event.valueChanged)
+        //addTarget(self, action: #(updateFeed), for: .valueChanged)
+        profileCollectionView.refreshControl = ProfileVC.refresh
+    }
+    
+    func startIndicator(){
+        indicatorOutlet.startAnimating()
+        indicatorOutlet.color = UIColor.white
+        indicatorOutlet.isHidden = false
+    }
+    func stopIndicator(){
+        indicatorOutlet.stopAnimating()
+        indicatorOutlet.isHidden = true
+    }
+    
+    @objc func updateProfile(){
+        print("Updating Feed")
+        ProfileVC.profilePosts = []
+        Post.getPostAtPath(["users",User.getProcessedEmail(),"postids"],"profile")
+        
+        
+    }
+    
+    @objc func reloadProfile(){
+        print("Reload posts")
+        profileCollectionView.reloadData()
+        stopIndicator()
     }
     
     //Number of cells
@@ -53,7 +95,7 @@ class ProfileVC : UIViewController,UICollectionViewDataSource,UICollectionViewDe
             //Give each cell their properties
             cell.imageView.image = post.image
             
-            cell.locationLabel.text = "\(post.city), \(post.state)"
+            cell.locationLabel.text = "\(post.city), \(post.state)".localizedCapitalized
             
             cell.userLabel.text = "\(post.name)"
             

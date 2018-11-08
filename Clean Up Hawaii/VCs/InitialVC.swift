@@ -12,9 +12,9 @@ class InitialVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Go To main Navigation VIew Controller
+        //Go To main Navigation View Controller
         self.goTo("MainNavVC", animate: false)
-
+        
     }
  
 }
